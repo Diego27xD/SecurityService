@@ -1,6 +1,11 @@
+using SecurityServiceBackend.Connections;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddSingleton<SQLServerConnectionFactory>();
+builder.Services.AddSingleton<SQLPostgresConnectionFactory>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
