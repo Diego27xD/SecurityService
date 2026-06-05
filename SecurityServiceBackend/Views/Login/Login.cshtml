@@ -1,0 +1,79 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model SecurityServiceBackend.Models.LoginViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+
+    <link rel="stylesheet" href="~/css/login.css" />
+</head>
+
+<body>
+
+    <div class="main-container">
+
+        <div class="right-background">
+
+            <img src="~/images/lines.png" class="line-image line-1" />
+            <img src="~/images/lines.png" class="line-image line-2" />
+
+        </div>
+
+        <div class="login-container">
+
+            <div class="login-content">
+
+                <h1>Ingresar</h1>
+
+                <form asp-controller="Login"
+                      asp-action="Login"
+                      method="post">
+
+                    <label>Usuario</label>
+
+                    <input asp-for="Usuario"
+                           placeholder="Ingresar correo o usuario" />
+
+                    <span asp-validation-for="Usuario"></span>
+
+                    <label>Contraseña</label>
+
+                    <input asp-for="Password"
+                           placeholder="Ingresar contraseña" />
+
+                    <span asp-validation-for="Password"></span>
+
+                    <button type="submit">
+                        Ingresar
+                    </button>
+
+                    <p class="forgot">
+                        ¿Olvidaste tu contraseña?
+                        <a href="#">Click aquí</a>
+                    </p>
+
+                    @if (ViewBag.Error != null)
+                    {
+                        <p class="error">@ViewBag.Error</p>
+                    }
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

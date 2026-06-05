@@ -1,41 +1,155 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<SecurityServiceBackend.Models.IngresoModel>
 @{
+    Layout = null;
 }
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Gestión de Ingresos</title>
+    <link rel="stylesheet" href="~/css/ingresos.css" />
+    <link rel="stylesheet"
+          href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" />
+</head>
+<body>
+    <!-- Cabecera -->
+    <header class="header">
+        <h1>NOMBRE EMPRESA</h1>
+        <nav>
+            <ul>
+                <li>
+                    <a asp-controller="Home"
+                       asp-action="Index">
+                        Ingresos
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Usuarios"
+                       asp-action="Index">
+                        Usuarios
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Login"
+                       asp-action="Login">
+                        Salir
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-<div style="position:absolute;width: 100%; height: 100%;">
-    
-    <div style="background-color:antiquewhite; width: 50%; height: 100%">
+    <!-- Filtros -->
+    <!-- Filtros -->
+    <section class="filters">
 
-    </div>
-    <div>
+        <h2>Ingresos de vehículos</h2>
 
-    </div>
-    
-</div>
+        <!-- IZQUIERDA -->
+        <div class="search-group">
+            <input type="text" placeholder="Buscar..." />
 
-<div style="position: relative;top: 20px;">
-    <section>
-        <p>Ingresar</p>
+            <button class="btn-buscar">
+                Buscar
+            </button>
+        </div>
+
+        <!-- DERECHA -->
+        <div class="filters-right">
+            <input type="text"
+                   placeholder="Seleccionar fecha de ingreso" />
+
+            <input type="date" />
+        </div>
+
     </section>
-    <form action="">
-        <section>
-            <aside>
-                <p>Usuario</p>
-                <input class="form-control" name="" type="text" />
-            </aside>
-            <aside>
-                <p>Contraseña</p>
-                <input class="form-control" name="" type="password" />
-            </aside>
-        </section>
-        <section>
-            <button type="submit" style="background-color:#4FD1C5">Ingresar</button>
-        </section>
-    </form>
-        
-    <section>
-        <p>Olvidaste tu contraseña? Click aquí</p>
+
+    <!-- Tabla -->
+    <section class="table-section">
+        <h2>Lista de ingresos</h2>
+        <table id="tablaIngresos">
+            <thead>
+                <tr>
+                    <th>Personal ingresante</th>
+                    <th>DNI Personal Ingresante</th>
+                    <th>Placa Vehículo</th>
+                    <th>Fecha de ingreso</th>
+                    <th>Personal Encargado</th>
+                    <th>Detalle</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var ingreso in Model)
+                {
+                    <tr>
+
+                        <td>@ingreso.PersonalIngresante</td>
+
+                        <td>@ingreso.DniIngresante</td>
+
+                        <td>@ingreso.PlacaVehiculo</td>
+
+                        <td>@ingreso.FechaIngreso</td>
+
+                        <td>@ingreso.PersonalEncargado</td>
+
+                        <td>
+
+                            <button class="btn-ver"
+                                    onclick="abrirModal(
+                                '@ingreso.PersonalIngresante',
+                                '@ingreso.DniIngresante',
+                                '@ingreso.PlacaVehiculo',
+                                '@ingreso.FechaIngreso',
+                                '@ingreso.PersonalEncargado'
+                                )">
+
+                                Ver
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>     
+        </table>
     </section>
-</div>
+    <div id="modalIngreso" class="modal">
+        <div class="modal-content">
+            <span class="close"
+                  onclick="cerrarModal()">
+                &times;
+
+            </span>
+            <h2>Detalle Ingreso</h2>
+            <p>
+                <strong>Personal:</strong>
+                <span id="mPersonal"></span>
+            </p>
+            <p>
+                <strong>DNI:</strong>
+                <span id="mDni"></span>
+            </p>
+            <p>
+                <strong>Placa:</strong>
+                <span id="mPlaca"></span>
+            </p>
+            <p>
+                <strong>Fecha:</strong>
+                <span id="mFecha"></span>
+            </p>
+            <p>
+                <strong>Encargado:</strong>
+                <span id="mEncargado"></span>
+            </p>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/ingresos.js"></script>
+</body>
+</html>
+

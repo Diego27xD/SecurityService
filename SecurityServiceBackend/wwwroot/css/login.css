@@ -1,0 +1,152 @@
+﻿* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	width: 100%;
+	height: 100vh;
+	font-family: Arial, sans-serif;
+	background: #f3f3f3;
+	overflow: hidden;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.main-container {
+	position: relative;
+	width: 1920px;
+	height: 1080px;
+	margin: auto;
+}
+
+/* FONDO DERECHO */
+.right-background {
+	position: absolute;
+	z-index: 1;
+	width: 862px;
+	height: 872px;
+	right: 0;
+	top: 0;
+	background: #58D6C3;
+	border-bottom-left-radius: 20px;
+	overflow: hidden;
+}
+
+/* IMÁGENES DE LÍNEAS */
+.line-image {
+    position: absolute;
+    opacity: 1;
+    filter: brightness(3);
+}
+
+/* Imagen 1 */
+.line-1 {
+	width: 1598px;
+	height: 799px;
+	top: -250px;
+	left: -500px;
+	transform: rotate(-45deg) ;
+	z-index: 2;
+}
+
+/* Imagen 2 */
+.line-2 {
+	width: 1598px;
+	height: 799px;
+	top: 250px;
+	left: -300px;
+	transform: rotate(135deg);
+	z-index: 2;
+}
+
+/* CONTENEDOR LOGIN */
+.login-container {
+	position: absolute;
+	width: 536px;
+	height: 614px;
+	top: 188px;
+	left: 692px;
+	background: rgba(255,255,255,0.85);
+	border-radius: 15px;
+	box-shadow: 0px 10px 25px rgba(0,0,0,0.08);
+	backdrop-filter: blur(5px);
+	z-index: 5;
+}
+
+/* CONTENIDO INTERNO */
+.login-content {
+	position: absolute;
+	width: 350px;
+	height: 407px;
+	top: 88px;
+	left: 93px;
+}
+
+	/* TÍTULO */
+	.login-content h1 {
+		text-align: center;
+		color: #58D6C3;
+		margin-bottom: 45px;
+		font-size: 40px;
+	}
+
+	/* LABELS */
+	.login-content label {
+		display: block;
+		margin-bottom: 10px;
+		margin-top: 20px;
+		color: #555;
+		font-size: 14px;
+	}
+
+	/* INPUTS */
+	.login-content input {
+		width: 100%;
+		height: 45px;
+		border: 1px solid #ddd;
+		border-radius: 10px;
+		padding-left: 15px;
+		outline: none;
+		background: #fff;
+	}
+
+	/* BOTÓN */
+	.login-content button {
+		width: 100%;
+		height: 48px;
+		margin-top: 40px;
+		border: none;
+		border-radius: 10px;
+		background: #58D6C3;
+		color: white;
+		font-size: 16px;
+		font-weight: bold;
+		cursor: pointer;
+		transition: 0.3s;
+	}
+
+		.login-content button:hover {
+			background: #44c0ae;
+		}
+
+/* TEXTO OLVIDÉ CONTRASEÑA */
+.forgot {
+	margin-top: 25px;
+	text-align: center;
+	font-size: 13px;
+	color: #777;
+}
+
+	.forgot a {
+		color: #58D6C3;
+		text-decoration: none;
+		font-weight: bold;
+	}
+
+/* ERROR */
+.error {
+	margin-top: 15px;
+	text-align: center;
+	color: red;
+}
