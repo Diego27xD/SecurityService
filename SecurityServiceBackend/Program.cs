@@ -1,6 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using SecurityServiceBackend.Data;
 using SecurityServiceBackend.Connections;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<BiosecurityContext>(options =>
+	options.UseNpgsql(
+		builder.Configuration.GetConnectionString("PostgreSqlConnection")
+	));
 
 // Add services to the container.
 builder.Services.AddSingleton<SQLServerConnectionFactory>();
@@ -27,8 +34,8 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
+	pattern: "{controller=Login}/{action=Login}/{id?}") //pattern: "{controller=Home}/{action=Index}/{id?}");
+	.WithStaticAssets();
 
 
 app.Run();

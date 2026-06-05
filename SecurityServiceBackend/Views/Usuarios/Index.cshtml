@@ -1,0 +1,170 @@
+﻿@model List<SecurityServiceBackend.Models.UsuarioModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Gestión de Usuarios</title>
+    <link rel="stylesheet" href="~/css/usuarios.css" />
+    <link rel="stylesheet"
+          href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" />
+</head>
+<body>
+    <!-- Cabecera -->
+    <header class="header">
+        <h1>NOMBRE EMPRESA</h1>
+        <nav>
+            <ul>
+                <li>
+                    <a asp-controller="Home"
+                       asp-action="Index">
+                        Ingresos
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Usuarios"
+                       asp-action="Index">
+                        Usuarios
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Login"
+                       asp-action="Login">
+                        Salir
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección Usuarios -->
+    <section class="usuarios-section">
+
+        <h2>Usuarios</h2>
+
+        <div class="filters">
+
+            <!-- IZQUIERDA -->
+            <div class="search-group">
+
+                <input type="text"
+                       placeholder="Buscar..." />
+
+                <button class="btn-buscar">
+                    Buscar
+                </button>
+
+            </div>
+
+            <!-- DERECHA -->
+            <div class="filters-right">
+
+                <button class="btn-reactivar">
+                    Reactivar
+                </button>
+
+                <button class="btn-baja">
+                    Dar de baja
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Tabla -->
+    <section class="table-section">
+        <h2>Lista de usuarios</h2>
+        <table id="tablaUsuarios">
+            <thead>
+                <tr>
+
+                    <th class="checkbox-col">
+                        <input type="checkbox" />
+                    </th>
+
+                    <th>Nombre completo</th>
+                    <th>DNI / Documento</th>
+                    <th>N° Teléfono</th>
+                    <th>Fecha de ingreso</th>
+                    <th>Departamento</th>
+                    <th>Estado</th>
+                    <th>Detalle</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var usuario in Model)
+                {
+                    <tr>
+
+                        <td>
+                            <input type="checkbox" />
+                        </td>
+
+                        <td>@usuario.NombreCompleto</td>
+
+                        <td>@usuario.Documento</td>
+
+                        <td>@usuario.Telefono</td>
+
+                        <td>@usuario.FechaIngreso</td>
+
+                        <td>@usuario.Departamento</td>
+
+                        <td>
+
+                            <span class="estado @(usuario.Estado == "Activo" ? "activo" : "inactivo")">
+                                @usuario.Estado
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button class="btn-ver"
+                                    onclick="abrirModal(
+                                '@usuario.NombreCompleto',
+                                '@usuario.Documento',
+                                '@usuario.Telefono',
+                                '@usuario.Departamento',
+                                '@usuario.Estado'
+                                )">
+
+                                Ver
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <div id="modalUsuario" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="cerrarModal()">
+                    &times;
+                </span>
+                <h2>Detalle Usuario</h2>
+                <p><strong>Nombre:</strong> <span id="mNombre"></span></p>
+                <p><strong>DNI:</strong> <span id="mDni"></span></p>
+                <p><strong>Teléfono:</strong> <span id="mTelefono"></span></p>
+                <p><strong>Departamento:</strong> <span id="mDepartamento"></span></p>
+                <p><strong>Estado:</strong> <span id="mEstado"></span></p>
+            </div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/usuarios.js"></script>
+</body>
+</html>
