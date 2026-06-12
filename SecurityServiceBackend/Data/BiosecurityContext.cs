@@ -13,5 +13,8 @@ namespace SecurityServiceBackend.Data
 		public DbSet<PersPerson> PersPersons { get; set; }
 
 		public DbSet<AuthDepartment> AuthDepartments { get; set; }
+
+		public DbSet<PersPosition> PersPositions { get; set; }
+
 	}
 }

@@ -2,14 +2,20 @@
 {
 	public class IngresoModel
 	{
-		public string PersonalIngresante { get; set; }
+		public string Matricula { get; set; }
 
-		public string DniIngresante { get; set; }
+		public string PropietarioOficial { get; set; }
 
-		public string PlacaVehiculo { get; set; }
+		public string DNI { get; set; }
 
-		public string FechaIngreso { get; set; }
+		public DateTime HoraIngreso { get; set; }
 
-		public string PersonalEncargado { get; set; }
+		public DateTime? HoraSalida { get; set; }
+
+		public string UsuarioManejando { get; set; }
+
+		public string AreaDestino { get; set; }
+
+		public string TiempoPermanencia { get; set; }
 	}
 }

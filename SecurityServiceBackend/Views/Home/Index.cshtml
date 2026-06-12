@@ -70,12 +70,14 @@
         <table id="tablaIngresos">
             <thead>
                 <tr>
-                    <th>Personal ingresante</th>
-                    <th>DNI Personal Ingresante</th>
-                    <th>Placa Vehículo</th>
-                    <th>Fecha de ingreso</th>
-                    <th>Personal Encargado</th>
-                    <th>Detalle</th>
+                    <th>Matrícula</th>
+                    <th>Propietario Oficial</th>
+                    <th>DNI</th>
+                    <th>Hora ingreso</th>
+                    <th>Hora salida</th>
+                    <th>Usuario manejando</th>
+                    <th>Área destino</th>
+                    <th>Tiempo permanencia</th>
                 </tr>
             </thead>
             <tbody>
@@ -84,37 +86,26 @@
                 {
                     <tr>
 
-                        <td>@ingreso.PersonalIngresante</td>
+                        <td>@ingreso.Matricula</td>
 
-                        <td>@ingreso.DniIngresante</td>
+                        <td>@ingreso.PropietarioOficial</td>
 
-                        <td>@ingreso.PlacaVehiculo</td>
+                        <td>@ingreso.DNI</td>
 
-                        <td>@ingreso.FechaIngreso</td>
+                        <td>@ingreso.HoraIngreso</td>
 
-                        <td>@ingreso.PersonalEncargado</td>
+                        <td>@ingreso.HoraSalida</td>
 
-                        <td>
+                        <td>@ingreso.UsuarioManejando</td>
 
-                            <button class="btn-ver"
-                                    onclick="abrirModal(
-                                '@ingreso.PersonalIngresante',
-                                '@ingreso.DniIngresante',
-                                '@ingreso.PlacaVehiculo',
-                                '@ingreso.FechaIngreso',
-                                '@ingreso.PersonalEncargado'
-                                )">
+                        <td>@ingreso.AreaDestino</td>
 
-                                Ver
-
-                            </button>
-
-                        </td>
+                        <td>@ingreso.TiempoPermanencia</td>
 
                     </tr>
                 }
 
-            </tbody>     
+            </tbody>
         </table>
     </section>
     <div id="modalIngreso" class="modal">

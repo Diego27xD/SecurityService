@@ -8,7 +8,7 @@
 
 		public string Telefono { get; set; }
 
-		public string FechaIngreso { get; set; }
+		public string Cargo { get; set; }
 
 		public string Departamento { get; set; }
 
