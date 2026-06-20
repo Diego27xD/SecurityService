@@ -1,0 +1,19 @@
+﻿@model SecurityServiceBackend.Models.UsuarioPaginadoModel
+
+
+<table>
+
+    <tbody id="tablaDatos">
+
+        @Html.Partial("_TablaUsuarios", Model.Usuarios)
+
+    </tbody>
+
+</table>
+
+
+<div id="paginacion" class="paginacion">
+
+    @Html.Partial("_PaginacionUsuarios", Model)
+
+</div>

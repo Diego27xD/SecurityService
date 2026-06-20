@@ -43,10 +43,9 @@ namespace SecurityServiceBackend.Data
 
                     pro.user_name AS usuario_manejando,
 
-                    pro.parking_area_name AS area_destino,
+                    pro.parking_area_name AS area_destino
 
-                    (pro.check_out_time - pro.check_in_time)
-                    AS tiempo_permanencia
+            
 
 
                 FROM park_recordout pro
@@ -105,11 +104,10 @@ namespace SecurityServiceBackend.Data
 
 
 					AreaDestino =
-					reader["area_destino"]?.ToString(),
+					reader["area_destino"]?.ToString()
 
 
-					TiempoPermanencia =
-					reader["tiempo_permanencia"]?.ToString()
+					
 
 				});
 

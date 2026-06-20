@@ -15,7 +15,5 @@
 		public string UsuarioManejando { get; set; }
 
 		public string AreaDestino { get; set; }
-
-		public string TiempoPermanencia { get; set; }
 	}
 }

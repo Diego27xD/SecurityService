@@ -1,0 +1,62 @@
+﻿@model SecurityServiceBackend.Models.UsuarioPaginadoModel
+
+
+@foreach (var usuario in Model.Usuarios)
+{
+
+    <tr>
+
+        <td>
+            <input type="checkbox" />
+        </td>
+
+
+        <td>@usuario.NombreCompleto</td>
+
+
+        <td>@usuario.Documento</td>
+
+
+        <td>@usuario.Telefono</td>
+
+
+        <td>@usuario.Cargo</td>
+
+
+        <td>@usuario.Departamento</td>
+
+
+        <td>
+
+            <span class="estado @(usuario.Estado == "Activo" ? "activo" : "inactivo")">
+
+                @usuario.Estado
+
+            </span>
+
+        </td>
+
+
+        <td>
+
+            <button class="btn-ver"
+                    onclick="abrirModal(
+                '@usuario.NombreCompleto',
+                '@usuario.Documento',
+                '@usuario.Telefono',
+                '@usuario.Cargo',
+                '@usuario.Departamento',
+                '@usuario.Estado'
+                )">
+
+                Ver
+
+            </button>
+
+
+        </td>
+
+
+    </tr>
+
+}

@@ -276,14 +276,18 @@ tbody tr:hover {
 		gap: 20px;
 	}
 
-	.filters-right,
+	/*.filters-right,
 	.search-group {
 		width: 100%;
 		flex-wrap: wrap;
-	}
+	}*/
 
 	.filters input[type="text"],
 	.filters input[type="date"] {
 		width: 100%;
 	}
+}
+
+.dataTables_filter {
+	display: none;
 }

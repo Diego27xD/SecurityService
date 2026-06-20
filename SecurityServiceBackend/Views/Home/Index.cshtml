@@ -40,27 +40,31 @@
     </header>
 
     <!-- Filtros -->
-    <!-- Filtros -->
     <section class="filters">
 
         <h2>Ingresos de vehículos</h2>
 
         <!-- IZQUIERDA -->
         <div class="search-group">
-            <input type="text" placeholder="Buscar..." />
 
-            <button class="btn-buscar">
+            <input id="buscarIngreso"
+                   type="text"
+                   placeholder="Buscar..." />
+
+            <button id="btnBuscar"
+                    class="btn-buscar">
                 Buscar
             </button>
+
         </div>
 
         <!-- DERECHA -->
-        <div class="filters-right">
+        @* <div class="filters-right">
             <input type="text"
                    placeholder="Seleccionar fecha de ingreso" />
 
             <input type="date" />
-        </div>
+        </div> *@
 
     </section>
 
@@ -77,7 +81,7 @@
                     <th>Hora salida</th>
                     <th>Usuario manejando</th>
                     <th>Área destino</th>
-                    <th>Tiempo permanencia</th>
+                    <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
@@ -87,21 +91,26 @@
                     <tr>
 
                         <td>@ingreso.Matricula</td>
-
                         <td>@ingreso.PropietarioOficial</td>
-
                         <td>@ingreso.DNI</td>
-
                         <td>@ingreso.HoraIngreso</td>
-
                         <td>@ingreso.HoraSalida</td>
-
                         <td>@ingreso.UsuarioManejando</td>
-
                         <td>@ingreso.AreaDestino</td>
-
-                        <td>@ingreso.TiempoPermanencia</td>
-
+                        <td>
+                            <button class="btn-ver"
+                                    onclick="abrirModal(
+                                '@ingreso.Matricula',
+                                '@ingreso.PropietarioOficial',
+                                '@ingreso.DNI',
+                                '@ingreso.HoraIngreso',
+                                '@ingreso.HoraSalida',
+                                '@ingreso.UsuarioManejando',
+                                '@ingreso.AreaDestino'
+                                )">
+                                Ver
+                            </button>
+                        </td>
                     </tr>
                 }
 
@@ -110,33 +119,42 @@
     </section>
     <div id="modalIngreso" class="modal">
         <div class="modal-content">
+
             <span class="close"
                   onclick="cerrarModal()">
                 &times;
-
             </span>
             <h2>Detalle Ingreso</h2>
             <p>
-                <strong>Personal:</strong>
-                <span id="mPersonal"></span>
+                <strong>Matrícula:</strong>
+                <span id="mMatricula"></span>
+            </p>
+            <p>
+                <strong>Propietario:</strong>
+                <span id="mPropietario"></span>
             </p>
             <p>
                 <strong>DNI:</strong>
                 <span id="mDni"></span>
             </p>
             <p>
-                <strong>Placa:</strong>
-                <span id="mPlaca"></span>
+                <strong>Hora ingreso:</strong>
+                <span id="mHoraIngreso"></span>
             </p>
             <p>
-                <strong>Fecha:</strong>
-                <span id="mFecha"></span>
+                <strong>Hora salida:</strong>
+                <span id="mHoraSalida"></span>
             </p>
             <p>
-                <strong>Encargado:</strong>
-                <span id="mEncargado"></span>
+                <strong>Usuario manejando:</strong>
+                <span id="mUsuario"></span>
+            </p>
+            <p>
+                <strong>Área destino:</strong>
+                <span id="mArea"></span>
             </p>
         </div>
+
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>

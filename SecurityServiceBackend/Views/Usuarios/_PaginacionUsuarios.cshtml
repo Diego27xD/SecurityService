@@ -1,0 +1,87 @@
+﻿@model SecurityServiceBackend.Models.UsuarioPaginadoModel
+
+
+@if (Model.PaginaActual > 1)
+{
+    <a href="#"
+       class="btn-pagina"
+       data-page="@(Model.PaginaActual - 1)">
+        Anterior
+    </a>
+}
+
+
+
+@{
+    int inicio = Math.Max(1, Model.PaginaActual - 2);
+
+    int fin = Math.Min(
+        Model.TotalPaginas,
+        Model.PaginaActual + 2
+    );
+}
+
+
+
+@if (inicio > 1)
+{
+
+    <a href="#"
+       class="btn-pagina"
+       data-page="1">
+
+        1
+
+    </a>
+
+
+    <span>...</span>
+}
+
+
+
+@for (int i = inicio; i <= fin; i++)
+{
+
+    <a href="#"
+       class="btn-pagina @(i == Model.PaginaActual ? "pagina-activa" : "")"
+       data-page="@i">
+
+        @i
+
+    </a>
+
+}
+
+
+
+@if (fin < Model.TotalPaginas)
+{
+
+    <span>...</span>
+
+
+    <a href="#"
+       class="btn-pagina"
+       data-page="@Model.TotalPaginas">
+
+        @Model.TotalPaginas
+
+    </a>
+
+}
+
+
+
+@if (Model.PaginaActual < Model.TotalPaginas)
+{
+
+    <a href="#"
+       class="btn-pagina"
+       data-page="@(Model.PaginaActual + 1)">
+
+        Siguiente
+
+    </a>
+
+}

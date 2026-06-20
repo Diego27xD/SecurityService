@@ -1,8 +1,10 @@
-﻿@model List<SecurityServiceBackend.Models.UsuarioModel>
+﻿@model SecurityServiceBackend.Models.UsuarioPaginadoModel
 
 @{
     Layout = null;
+    var busquedaActual = Context.Request.Query["buscar"].ToString();
 }
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -10,8 +12,7 @@
     <meta charset="utf-8" />
     <title>Gestión de Usuarios</title>
     <link rel="stylesheet" href="~/css/usuarios.css" />
-    <link rel="stylesheet"
-          href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" />
+    
 </head>
 <body>
     <!-- Cabecera -->
@@ -51,10 +52,14 @@
             <!-- IZQUIERDA -->
             <div class="search-group">
 
-                <input type="text"
+                <input id="buscarUsuario"
+                       name="buscar"
+                       type="text"
                        placeholder="Buscar..." />
 
-                <button class="btn-buscar">
+                <button type="button"
+                        id="btnBuscar"
+                        class="btn-buscar">
                     Buscar
                 </button>
 
@@ -99,56 +104,17 @@
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody id="tablaDatos">
 
-                @foreach (var usuario in Model)
-                {
-                    <tr>
-
-                        <td>
-                            <input type="checkbox" />
-                        </td>
-
-                        <td>@usuario.NombreCompleto</td>
-
-                        <td>@usuario.Documento</td>
-
-                        <td>@usuario.Telefono</td>
-
-                        <td>@usuario.Cargo</td>
-
-                        <td>@usuario.Departamento</td>
-
-                        <td>
-
-                            <span class="estado @(usuario.Estado == "Activo" ? "activo" : "inactivo")">
-                                @usuario.Estado
-                            </span>
-
-                        </td>
-
-                        <td>
-
-                            <button class="btn-ver"
-                                    onclick="abrirModal(
-                                '@usuario.NombreCompleto',
-                                '@usuario.Documento',
-                                '@usuario.Telefono',
-                                '@usuario.Departamento',
-                                '@usuario.Estado'
-                                )">
-
-                                Ver
-
-                            </button>
-
-                        </td>
-
-                    </tr>
-                }
+                @Html.Partial("_TablaUsuarios", Model.Usuarios)
 
             </tbody>
         </table>
+        <div id="paginacion" class="paginacion">
+
+            @Html.Partial("_PaginacionUsuarios", Model)
+
+        </div>
         <div id="modalUsuario" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="cerrarModal()">
@@ -165,7 +131,7 @@
         </div>
     </section>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    
     <script src="~/js/usuarios.js"></script>
 </body>
 </html>
