@@ -1,38 +1,129 @@
-﻿    $(document).ready(function () {
+﻿$(document).ready(function () {
 
-        $('#tablaIngresos').DataTable({
 
-            language: {
-                search: "Buscar:",
-                lengthMenu: "Mostrar _MENU_ registros",
-                info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+    var tabla = $('#tablaIngresos').DataTable({
 
-                paginate: {
-                    next: "Siguiente",
-                    previous: "Anterior"
-                }
+        language: {
+
+            lengthMenu: "Mostrar _MENU_ registros",
+
+            info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+
+            paginate: {
+
+                next: "Siguiente",
+
+                previous: "Anterior"
+
             }
 
-        });
+        }
 
-        });
+    });
 
-    function abrirModal(personal, dni, placa, fecha, encargado)
-    {
-        document.getElementById("mPersonal").innerText = personal;
 
-    document.getElementById("mDni").innerText = dni;
 
-    document.getElementById("mPlaca").innerText = placa;
+    // BOTÓN BUSCAR PERSONALIZADO
 
-    document.getElementById("mFecha").innerText = fecha;
+    $("#btnBuscar").click(function () {
 
-    document.getElementById("mEncargado").innerText = encargado;
+
+        var texto = $("#buscarIngreso").val();
+
+
+        tabla.search(texto).draw();
+
+
+    });
+
+
+
+    // BUSCAR MIENTRAS ESCRIBE
+
+    $("#buscarIngreso").keyup(function () {
+
+
+        var texto = $(this).val();
+
+
+        tabla.search(texto).draw();
+
+
+    });
+
+
+
+});
+
+
+
+
+
+function abrirModal(
+    matricula,
+    propietario,
+    dni,
+    horaIngreso,
+    horaSalida,
+    usuario,
+    area
+) {
+
+
+    document.getElementById("mMatricula").innerHTML = matricula;
+
+
+    document.getElementById("mPropietario").innerHTML = propietario;
+
+
+    document.getElementById("mDni").innerHTML = dni;
+
+
+    document.getElementById("mHoraIngreso").innerHTML = horaIngreso;
+
+
+    document.getElementById("mHoraSalida").innerHTML = horaSalida;
+
+
+    document.getElementById("mUsuario").innerHTML = usuario;
+
+
+    document.getElementById("mArea").innerHTML = area;
+
+
 
     document.getElementById("modalIngreso").style.display = "block";
-        }
 
-    function cerrarModal()
-    {
-        document.getElementById("modalIngreso").style.display = "none";
-        }
+}
+
+
+
+
+function cerrarModal() {
+
+
+    document.getElementById("modalIngreso").style.display = "none";
+
+
+}
+
+
+
+
+
+window.onclick = function (event) {
+
+
+    var modal = document.getElementById("modalIngreso");
+
+
+    if (event.target == modal) {
+
+
+        modal.style.display = "none";
+
+
+    }
+
+
+}

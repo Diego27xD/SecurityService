@@ -303,6 +303,41 @@ input[type="checkbox"] {
 		color: #111;
 	}
 
+.paginacion {
+	margin-top: 25px;
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+	align-items: center;
+}
+
+
+	.paginacion a {
+		padding: 8px 14px;
+		border-radius: 8px;
+		text-decoration: none;
+		border: 1px solid #ddd;
+		color: #333;
+	}
+
+
+		.paginacion a:hover {
+			background: #5bcfc8;
+			color: white;
+		}
+
+
+.pagina-activa {
+	background: #5bcfc8;
+	color: white !important;
+	font-weight: bold;
+}
+
+
+.paginacion span {
+	padding: 8px;
+}
+
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 1200px) {
@@ -328,4 +363,8 @@ input[type="checkbox"] {
 	.filters input[type="text"] {
 		width: 100%;
 	}
+}
+
+.dataTables_filter {
+	display: none;
 }

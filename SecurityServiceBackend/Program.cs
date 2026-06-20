@@ -12,6 +12,7 @@ builder.Services.AddDbContext<BiosecurityContext>(options =>
 // Add services to the container.
 builder.Services.AddSingleton<SQLServerConnectionFactory>();
 builder.Services.AddSingleton<SQLPostgresConnectionFactory>();
+builder.Services.AddSingleton<IngresoRepository>();
 
 builder.Services.AddControllersWithViews();
 
