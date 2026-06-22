@@ -12,6 +12,7 @@ namespace SecurityServiceBackend.Models
 
         [Required(ErrorMessage = "La contraseña es obligatoria")]
         [DataType(DataType.Password)]
-        public string Password { get; set; } = string.Empty;
+		[MinLength(6, ErrorMessage = "La contraseña debe tener mínimo 6 caracteres")]
+		public string Password { get; set; } = string.Empty;
     }
 }
