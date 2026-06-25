@@ -150,3 +150,32 @@ body {
 	text-align: center;
 	color: red;
 }
+
+/* ===== MENSAJES DE VALIDACION LOGIN ===== */
+
+.field-validation-error {
+	display: block;
+	width: 100%;
+	text-align: center;
+	margin-top: 8px;
+	margin-bottom: 12px;
+	color: #e53e3e;
+	font-size: 13px;
+	font-weight: 600;
+}
+
+
+/* Mensaje de usuario o contraseña incorrectos */
+
+.error {
+	width: 100%;
+	text-align: center;
+	margin-top: 18px;
+	padding: 10px;
+	color: #c53030;
+	background: #fff5f5;
+	border: 1px solid #fed7d7;
+	border-radius: 10px;
+	font-size: 14px;
+	font-weight: 600;
+}

@@ -32,32 +32,54 @@
                       method="post">
 
                     <label>Usuario</label>
-                    <input asp-for="Usuario" placeholder="Usuario o correo" />
+
+                    <input asp-for="Usuario"
+                           placeholder="Usuario o correo" />
+
                     <span asp-validation-for="Usuario"></span>
 
+
                     <label>Nombre</label>
-                    <input asp-for="Nombre" placeholder="Nombre completo" />
+
+                    <input asp-for="Nombre"
+                           placeholder="Nombre completo" />
+
                     <span asp-validation-for="Nombre"></span>
+
 
                     <button type="submit">
                         Registrar
                     </button>
 
-                    <button type="button"
-                            class="btn-login"
-                            onclick="location.href='/'">
-                        Volver al login
-                    </button>
 
                     @if (ViewBag.Error != null)
                     {
-                        <p class="error">@ViewBag.Error</p>
+                        <p class="error">
+                            @ViewBag.Error
+                        </p>
                     }
+
 
                     @if (ViewBag.Mensaje != null)
                     {
-                        <p class="success">@ViewBag.Mensaje</p>
+                        <p class="success">
+                            @ViewBag.Mensaje
+                        </p>
                     }
+
+                </form>
+
+
+                <form asp-controller="Login"
+                      asp-action="Logout"
+                      method="post">
+
+                    <button type="submit"
+                            class="btn-login">
+
+                        Volver al login
+
+                    </button>
 
                 </form>
 

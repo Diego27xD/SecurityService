@@ -104,22 +104,27 @@ body {
 
 /* ===== BOTONES ===== */
 .btn-nuevo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	width: 140px;
 	height: 48px;
-	border: none;
 	border-radius: 30px;
 	background: linear-gradient(90deg, #63d5cf, #4fc7c0);
 	color: white;
 	font-size: 14px;
 	font-weight: 600;
+	text-decoration: none;
 	cursor: pointer;
 	transition: 0.3s;
 	box-shadow: 0 4px 10px rgba(58,109,240,0.25);
 }
 
+
 	.btn-nuevo:hover {
 		transform: translateY(-2px);
 		opacity: 0.9;
+		color: white;
 	}
 
 /* ===== TABLA ===== */
