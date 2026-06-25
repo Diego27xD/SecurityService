@@ -1,0 +1,206 @@
+﻿@model List<SecurityServiceBackend.ViewModel.UsuarioAccesoViewModel>
+
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <title>Acceso</title>
+
+
+    <link rel="stylesheet"
+          href="~/css/acceso.css" />
+    <link rel="stylesheet"
+          href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" />
+
+
+</head>
+
+
+<body>
+
+
+    <header class="header">
+
+        <h1>NOMBRE EMPRESA</h1>
+
+
+        <nav>
+
+            <ul>
+
+
+                <li>
+                    <a asp-controller="Home"
+                       asp-action="Index">
+
+                        Ingresos
+
+                    </a>
+                </li>
+
+
+                <li>
+                    <a asp-controller="Usuarios"
+                       asp-action="Index">
+
+                        Usuarios
+
+                    </a>
+                </li>
+                <li>
+
+                    <form asp-controller="Login"
+                          asp-action="Logout"
+                          method="post"
+                          class="logout-form">
+
+
+                        <button class="logout-link">
+
+                            Salir
+
+                        </button>
+
+
+                    </form>
+
+                </li>
+
+
+                <li>
+                    <a asp-controller="Acceso"
+                       asp-action="Index">
+
+                        Acceso
+
+                    </a>
+                </li>
+
+
+                
+
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+
+
+    <section class="table-section">
+
+
+        <h2>Usuarios de acceso</h2>
+
+
+        <div class="acciones-acceso">
+
+            <a class="btn-nuevo"
+               asp-controller="Registro"
+               asp-action="Registro">
+
+                Nuevo
+
+            </a>
+
+        </div>
+
+
+        <table id="tablaAcceso">
+
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Usuario</th>
+
+                    <th>Nombre</th>
+
+                    <th>Password</th>
+
+                    <th>Fecha creación</th>
+
+
+                </tr>
+
+
+            </thead>
+
+
+            <tbody>
+
+
+                @foreach (var usuario in Model)
+                {
+
+                    <tr>
+
+
+                        <td>
+                            @usuario.Id
+                        </td>
+
+
+                        <td>
+                            @usuario.NombreUsuario
+                        </td>
+
+
+                        <td>
+                            @usuario.Nombre
+                        </td>
+
+
+                        <td>
+                            @usuario.EstadoPassword
+                        </td>
+
+
+                        <td>
+                            @usuario.FechaCreacion
+                        </td>
+
+
+
+                    </tr>
+
+
+                }
+
+
+            </tbody>
+
+
+        </table>
+
+
+
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+
+
+    <script src="~/js/acceso.js"></script>
+
+</body>
+
+
+</html>

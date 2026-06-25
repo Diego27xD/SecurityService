@@ -33,9 +33,29 @@
                     </a>
                 </li>
                 <li>
-                    <a asp-controller="Login"
-                       asp-action="Login">
-                        Salir
+
+                    <form asp-controller="Login"
+                          asp-action="Logout"
+                          method="post"
+                          class="logout-form">
+
+
+                        <button type="submit"
+                                class="logout-link">
+
+                            Salir
+
+                        </button>
+
+
+                    </form>
+
+                </li>
+                <li>
+
+                    <a asp-controller="Acceso"
+                       asp-action="Index">
+                        Acceso
                     </a>
                 </li>
             </ul>
@@ -66,7 +86,7 @@
             </div>
 
             <!-- DERECHA -->
-            <div class="filters-right">
+            @* <div class="filters-right">
 
                 <button class="btn-reactivar">
                     Reactivar
@@ -76,7 +96,7 @@
                     Dar de baja
                 </button>
 
-            </div>
+            </div> *@
 
         </div>
 
